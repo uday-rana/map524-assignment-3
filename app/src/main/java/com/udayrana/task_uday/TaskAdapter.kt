@@ -22,12 +22,12 @@ class TaskAdapter(val taskList: MutableList<Task>, val clickListener: ClickListe
         val task = taskList[position]
 
         holder.binding.textViewTaskDescription.text = task.description
-        
+
         holder.binding.imageViewDeleteTask.setOnClickListener {
             clickListener.deleteTask(position)
         }
         holder.binding.imageViewUpdateTask.setOnClickListener {
-            clickListener.updateTask(position)
+            clickListener.selectTask(position)
         }
     }
 }
