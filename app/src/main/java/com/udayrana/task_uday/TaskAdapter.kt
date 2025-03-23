@@ -25,6 +25,8 @@ class TaskAdapter(val taskList: MutableList<Task>, val clickListener: ClickListe
         holder.binding.textViewTaskDescription.text = task.description
         if (task.isHighPriority) {
             holder.binding.imageViewHighPriority.visibility = View.VISIBLE
+        } else {
+            holder.binding.imageViewHighPriority.visibility = View.INVISIBLE
         }
 
         holder.binding.imageViewDeleteTask.setOnClickListener {

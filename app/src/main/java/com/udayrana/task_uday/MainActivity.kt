@@ -50,25 +50,27 @@ class MainActivity : AppCompatActivity(), ClickListener {
     }
 
     override fun selectTask(position: Int) {
+        // Populate the form with the selected task’s name and priority level.
         selectedTaskPosition = position
         val selectedTask = taskList[position]
-
         binding.editTextEnterTheTodo.setText(selectedTask.description)
         binding.switchIsHighPriority.isChecked = selectedTask.isHighPriority
+
+        // Disable the Add Task button
         binding.buttonAddTask.isEnabled = false
+
+        // Enable the Update Task button
         binding.buttonUpdateTask.isEnabled = true
     }
 
     fun addTask() {
+        // Add the task to the list and update the RecyclerView
         binding.textInputEnterTheTodoLayout.error = ""
-
         val newTaskDescription = binding.editTextEnterTheTodo.text.toString()
-
         if (newTaskDescription.isEmpty()) {
             binding.textInputEnterTheTodoLayout.error = "Required"
             return
         }
-
         taskList.add(
             Task(
                 newTaskDescription,
@@ -77,14 +79,35 @@ class MainActivity : AppCompatActivity(), ClickListener {
         )
         adapter.notifyDataSetChanged()
 
-        // Clear form
+        // Clear all form fields and prepare new input
         binding.editTextEnterTheTodo.setText("")
         binding.switchIsHighPriority.isChecked = false
-
-        adapter.notifyDataSetChanged()
     }
 
     fun updateTask() {
-        TODO("Not yet implemented")
+        // Edit the selected task with the provided form field data
+        binding.textInputEnterTheTodoLayout.error = ""
+        val newTaskDescription = binding.editTextEnterTheTodo.text.toString()
+        if (newTaskDescription.isEmpty()) {
+            binding.textInputEnterTheTodoLayout.error = "Required"
+            return
+        }
+        taskList[selectedTaskPosition].description = newTaskDescription
+        taskList[selectedTaskPosition].isHighPriority = binding.switchIsHighPriority.isChecked
+
+        // Ensure the RecyclerView is updated with the new data.
+        adapter.notifyDataSetChanged()
+
+        // Clear all form fields and prepare for new input.
+        binding.editTextEnterTheTodo.setText("")
+        binding.switchIsHighPriority.isChecked = false
+
+        selectedTaskPosition = -1
+
+        // Disable the Update Task button
+        binding.buttonUpdateTask.isEnabled = false
+
+        // Enable the Add Task button
+        binding.buttonAddTask.isEnabled = true
     }
 }
