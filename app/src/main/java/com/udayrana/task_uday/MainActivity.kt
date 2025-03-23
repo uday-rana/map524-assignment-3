@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity(), ClickListener {
         Task("Walk dogs", true),
         Task("Feed cats", false),
     )
+    var selectedTaskPosition = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +29,14 @@ class MainActivity : AppCompatActivity(), ClickListener {
                 LinearLayoutManager.VERTICAL
             )
         )
+
+        binding.buttonAddTask.setOnClickListener {
+            addTask()
+        }
+
+        binding.buttonUpdateTask.setOnClickListener {
+            updateTask()
+        }
     }
 
     override fun deleteTask(position: Int) {
@@ -36,7 +45,13 @@ class MainActivity : AppCompatActivity(), ClickListener {
     }
 
     override fun selectTask(position: Int) {
-        TODO("Not yet implemented")
+        selectedTaskPosition = position
+        val selectedTask = taskList[position]
+
+        binding.editTextEnterTheTodo.setText(selectedTask.description)
+        binding.switchIsHighPriority.isChecked = selectedTask.isHighPriority
+        binding.buttonAddTask.isEnabled = false
+        binding.buttonUpdateTask.isEnabled = true
     }
 
     fun addTask() {
