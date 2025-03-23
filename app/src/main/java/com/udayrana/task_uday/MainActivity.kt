@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity(), ClickListener {
     private lateinit var adapter: TaskAdapter
     var taskList: MutableList<Task> = mutableListOf(
         Task("Walk dogs", true),
-        Task("Walk dogs", false),
+        Task("Feed cats", false),
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
