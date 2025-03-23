@@ -10,27 +10,7 @@ class MainActivity : AppCompatActivity(), ClickListener {
     private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: TaskAdapter
     var taskList: MutableList<Task> = mutableListOf(
-        Task("Walk dogs", false),
-        Task("Walk dogs", false),
-        Task("Walk dogs", false),
-        Task("Walk dogs", false),
-        Task("Walk dogs", false),
-        Task("Walk dogs", false),
-        Task("Walk dogs", false),
-        Task("Walk dogs", false),
-        Task("Walk dogs", false),
-        Task("Walk dogs", false),
-        Task("Walk dogs", false),
-        Task("Walk dogs", false),
-        Task("Walk dogs", false),
-        Task("Walk dogs", false),
-        Task("Walk dogs", false),
-        Task("Walk dogs", false),
-        Task("Walk dogs", false),
-        Task("Walk dogs", false),
-        Task("Walk dogs", false),
-        Task("Walk dogs", false),
-        Task("Walk dogs", false),
+        Task("Walk dogs", true),
         Task("Walk dogs", false),
     )
 

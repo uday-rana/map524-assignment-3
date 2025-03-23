@@ -28,17 +28,24 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/imageViewHighPriority"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/high_priority"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/outline_error_outline_24" />
+
+        <ImageView
             android:id="@+id/imageViewDeleteTask"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:contentDescription="@string/delete"
             android:src="@drawable/outline_delete_24" />
 
         <ImageView
             android:id="@+id/imageViewUpdateTask"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginStart="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:contentDescription="@string/update"
             android:src="@drawable/outline_edit_24" />
 
