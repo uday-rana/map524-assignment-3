@@ -75,6 +75,7 @@ class MainActivity : AppCompatActivity(), ClickListener {
                 binding.switchIsHighPriority.isChecked
             )
         )
+        adapter.notifyDataSetChanged()
 
         // Clear form
         binding.editTextEnterTheTodo.setText("")
