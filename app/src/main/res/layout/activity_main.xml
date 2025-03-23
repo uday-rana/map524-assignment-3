@@ -42,22 +42,28 @@
         android:layout_marginBottom="20dp"
         android:text="@string/enter_a_new_task"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@id/editTextEnterTheTodo"
+        app:layout_constraintBottom_toTopOf="@id/text_input_enter_the_todo_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextEnterTheTodo"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_enter_the_todo_layout"
+        style="?attr/textInputFilledStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         android:layout_marginBottom="10dp"
-        android:ems="10"
         android:hint="@string/enter_the_todo"
-        android:inputType="text"
         app:layout_constraintBottom_toTopOf="@id/switchIsHighPriority"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextEnterTheTodo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.materialswitch.MaterialSwitch
         android:id="@+id/switchIsHighPriority"

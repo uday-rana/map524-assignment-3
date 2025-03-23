@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity(), ClickListener {
         Task("Walk dogs", true),
         Task("Feed cats", false),
     )
-    var selectedTaskPosition = -1
+    var selectedTaskPosition = -1 // Tracks selection for updating
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +55,27 @@ class MainActivity : AppCompatActivity(), ClickListener {
     }
 
     fun addTask() {
-        TODO("Not yet implemented")
+        binding.textInputEnterTheTodoLayout.error = ""
+
+        val newTaskDescription = binding.editTextEnterTheTodo.text.toString()
+
+        if (newTaskDescription.isEmpty()) {
+            binding.textInputEnterTheTodoLayout.error = "Required"
+            return
+        }
+
+        taskList.add(
+            Task(
+                newTaskDescription,
+                binding.switchIsHighPriority.isChecked
+            )
+        )
+
+        // Clear form
+        binding.editTextEnterTheTodo.setText("")
+        binding.switchIsHighPriority.isChecked = false
+
+        adapter.notifyDataSetChanged()
     }
 
     fun updateTask() {
