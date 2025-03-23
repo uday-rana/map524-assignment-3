@@ -9,11 +9,11 @@ import com.udayrana.task_uday.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity(), ClickListener {
     private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: TaskAdapter
-    var taskList: MutableList<Task> = mutableListOf(
+    private var taskList: MutableList<Task> = mutableListOf(
         Task("Walk dogs", true),
         Task("Feed cats", false),
     )
-    var selectedTaskPosition = -1 // Tracks selection for updating
+    private var selectedTaskPosition = -1 // Tracks selection for updating
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +44,10 @@ class MainActivity : AppCompatActivity(), ClickListener {
         if (position == selectedTaskPosition) {
             binding.editTextEnterTheTodo.setText("")
             binding.switchIsHighPriority.isChecked = false
+            // Disable the Update Task button
+            binding.buttonUpdateTask.isEnabled = false
+            // Enable the Add Task button
+            binding.buttonAddTask.isEnabled = true
         }
         taskList.removeAt(position)
         adapter.notifyDataSetChanged()
@@ -63,7 +67,7 @@ class MainActivity : AppCompatActivity(), ClickListener {
         binding.buttonUpdateTask.isEnabled = true
     }
 
-    fun addTask() {
+    private fun addTask() {
         // Add the task to the list and update the RecyclerView
         binding.textInputEnterTheTodoLayout.error = ""
         val newTaskDescription = binding.editTextEnterTheTodo.text.toString()
@@ -84,7 +88,7 @@ class MainActivity : AppCompatActivity(), ClickListener {
         binding.switchIsHighPriority.isChecked = false
     }
 
-    fun updateTask() {
+    private fun updateTask() {
         // Edit the selected task with the provided form field data
         binding.textInputEnterTheTodoLayout.error = ""
         val newTaskDescription = binding.editTextEnterTheTodo.text.toString()
