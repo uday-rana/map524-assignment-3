@@ -31,7 +31,8 @@ class MainActivity : AppCompatActivity(), ClickListener {
     }
 
     override fun deleteTask(position: Int) {
-        TODO("Not yet implemented")
+        taskList.removeAt(position)
+        adapter.notifyDataSetChanged()
     }
 
     override fun selectTask(position: Int) {
@@ -39,6 +40,10 @@ class MainActivity : AppCompatActivity(), ClickListener {
     }
 
     fun addTask() {
+        TODO("Not yet implemented")
+    }
+
+    fun updateTask() {
         TODO("Not yet implemented")
     }
 }
