@@ -40,6 +40,11 @@ class MainActivity : AppCompatActivity(), ClickListener {
     }
 
     override fun deleteTask(position: Int) {
+        // Clear form if selected task is deleted
+        if (position == selectedTaskPosition) {
+            binding.editTextEnterTheTodo.setText("")
+            binding.switchIsHighPriority.isChecked = false
+        }
         taskList.removeAt(position)
         adapter.notifyDataSetChanged()
     }
